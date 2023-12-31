@@ -1,5 +1,12 @@
 <?php
+session_start();
 require 'function.php';
+
+if (isset($_SESSION["pasien"])) {
+  header("Location: jadwal.php");
+} elseif (isset($_SESSION["admin"])) {
+  header("Location: admin/dashboard.php");
+}
 
 
 if (isset($_POST["login"])) {
@@ -10,7 +17,6 @@ if (isset($_POST["login"])) {
 
   $result = mysqli_query($connect, "SELECT * FROM users WHERE username = '$username'");
 
-
   //cek username
   if (mysqli_num_rows($result) === 1) {
 
@@ -18,29 +24,25 @@ if (isset($_POST["login"])) {
     //cek password
     $verif = password_verify($password, $row["password"]);
     if ($verif) {
-      // $_SESSION["pelanggan"] = true;
-      echo "<script>
-              alert('Berhasil Login');
-              window.location.href = 'jadwal.php'
-            </script>";
-      exit;
+      if ($row['role'] === 'pasien') {
+        $_SESSION["pasien"] = true;
+        $_SESSION["id"] = $row["id_user"];
+        $_SESSION["nama"] = $username;
+        echo "<script>
+                alert('Berhasil Login');
+                window.location.href = 'daftar_dokter.php'
+              </script>";
+        exit;
+      } else {
+        $_SESSION["admin"] = true;
+        echo "<script>
+                alert('Berhasil Login');
+                window.location.href = 'admin/dashboard.php'
+              </script>";
+        exit;
+      }
     }
   }
-  // $result2 = mysqli_query($connect, "SELECT * FROM users WHERE npm = '$npm' AND password = '$password' ");
-  // $cek = mysqli_num_rows($result2);
-
-  // if ($cek > 0) {
-
-  //   $data = mysqli_fetch_assoc($result2);
-
-  //   if ($data["level"] === "admin") {
-  //     $_SESSION["admin"] = true;
-  //     $_SESSION["user_admin"] = $npm;
-  //     echo "<script>
-  //                 window.location.href = '../../../Admin/'
-  //             </script>";
-  //   }
-  // }
   $error = true;
 }
 
@@ -68,7 +70,7 @@ if (isset($_POST["login"])) {
           <div class="flip-card__front">
             <div class="title">Sign In</div>
             <?php if (isset($error)) : ?>
-                  <p class="text-danger">Username atau password salah</p>
+              <p class="text-danger">Username atau password salah</p>
             <?php endif; ?>
             <form class="flip-card__form" action="" method="POST">
               <input class="flip-card__input" name="username" placeholder="Username" type="text">
