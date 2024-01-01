@@ -1,21 +1,28 @@
-<?php 
-    require '../function.php';
+<?php
 
-    if (isset($_POST["submit"])) {
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("Location: ../");
+    exit;
+}
 
-        if (tambahDokter($_POST) > 0) {
-            echo
-            "<script>
+require '../function.php';
+
+if (isset($_POST["submit"])) {
+
+    if (tambahDokter($_POST) > 0) {
+        echo
+        "<script>
                     alert('Dokter berhasil ditambahkan');
                     window.location.href = 'datadokter.php';
                 </script>";
-        } else {
-            echo
-            "<script>
+    } else {
+        echo
+        "<script>
                     alert('Dokter gagal ditambahkan :( ');
                 </script>";
-        }
     }
+}
 
 ?>
 

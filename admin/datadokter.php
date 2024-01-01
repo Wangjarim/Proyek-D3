@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("Location: ../");
+    exit;
+}
+
+
 require '../function.php';
 
 $query = mysqli_query($connect, "SELECT d.*,j.hari,j.jam,j.ruangan,j.id AS id_jadwal 

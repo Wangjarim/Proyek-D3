@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("Location: ../");
+    exit;
+}
+
 require '../function.php';
 
 $id = $_GET["id"];

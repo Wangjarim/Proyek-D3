@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("Location: ../");
+    exit;
+}
+
+require '../function.php';
+
+$query = mysqli_query($connect, "SELECT p.*,u.nama_lengkap FROM pasien p INNER JOIN users u ON p.id_user = u.id_user");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,6 +113,7 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Pasien</th>
                                         <th>NIK</th>
                                         <th>Jenis Kelamin</th>
@@ -110,6 +125,7 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Pasien</th>
                                         <th>NIK</th>
                                         <th>Jenis Kelamin</th>
@@ -120,15 +136,20 @@
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                    </tr>
+                                    <?php $i = 1 ?>
+                                    <?php while ($pasien = mysqli_fetch_assoc($query)) : ?>
+                                        <tr>
+                                            <td><?= $i; ?></td>
+                                            <td><?= $pasien['nama_lengkap']; ?></td>
+                                            <td><?= $pasien['nik']; ?></td>
+                                            <td><?= $pasien['jenis_kelamin']; ?></td>
+                                            <td><?= $pasien['tempat_lahir']; ?></td>
+                                            <td><?= $pasien['tanggal_lahir']; ?></td>
+                                            <td><?= $pasien['alamat']; ?></td>
+                                            <td><?= $pasien['no_hp']; ?></td>
+                                        </tr>
+                                        <?php $i++ ?>
+                                    <?php endwhile; ?>
                                 </tbody>
                             </table>
                         </div>
