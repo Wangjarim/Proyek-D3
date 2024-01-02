@@ -144,6 +144,21 @@ function dataDiri($data)
     $carbonDate = Carbon::parse($tgl_reservasi);
     $nama_hari_input = $carbonDate->translatedFormat('l');
 
+    // Pemeriksaan apakah pasien sudah melakukan reservasi pada hari yang sama
+    $query_check_reservasi = "SELECT COUNT(*) AS jumlah_reservasi FROM pasien WHERE id_user = '$id_user' AND tanggal_reservasi = '$tgl_reservasi'";
+    $result_check_reservasi = mysqli_query($connect, $query_check_reservasi);
+    $row_check_reservasi = mysqli_fetch_assoc($result_check_reservasi);
+
+    $jumlah_reservasi = $row_check_reservasi['jumlah_reservasi'];
+
+    if ($jumlah_reservasi > 0) {
+        // Pasien sudah melakukan reservasi pada hari yang sama
+        echo "<script>
+            alert('Maaf, Anda sudah melakukan reservasi pada tanggal $tgl_reservasi.');
+        </script>";
+        return false;
+    }
+
     // Cek apakah dokter memiliki jadwal pada hari tersebut
     $query_jadwal_hari = "SELECT COUNT(*) AS jumlah_jadwal FROM jadwal_dokter WHERE id_dokter = '$id_dokter' AND hari = '$nama_hari_input'";
     $result_jadwal_hari = mysqli_query($connect, $query_jadwal_hari);

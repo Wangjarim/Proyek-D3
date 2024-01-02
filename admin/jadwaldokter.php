@@ -133,7 +133,17 @@ if (isset($_POST["submit"])) {
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Hari</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="hari">
+                                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="hari"> -->
+                                    <select name="hari" id="hari" class="form-select">
+                                        <option disabled selected>Pilih Hari</option>
+                                        <option value="Senin">Senin</option>
+                                        <option value="Selasa">Selasa</option>
+                                        <option value="Rabu">Rabu</option>
+                                        <option value="Kamis">Kamis</option>
+                                        <option value="Jumat">Jum'at</option>
+                                        <option value="Sabtu">Sabtu</option>
+                                        <option value="Minggu">Minggu</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Jam</label>

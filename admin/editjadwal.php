@@ -135,7 +135,17 @@ if (isset($_POST["submit"])) {
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Hari</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="hari" value="<?= $dokter['hari']; ?>">
+                                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="hari" value="<?= $dokter['hari']; ?>"> -->
+                                    <select name="hari" id="hari" class="form-select">
+                                        <option disabled <?php echo ($dokter['hari'] == 'Pilih Hari') ? 'selected' : ''; ?>>Pilih Hari</option>
+                                        <option value="Senin" <?php echo ($dokter['hari'] == 'Senin') ? 'selected' : ''; ?>>Senin</option>
+                                        <option value="Selasa" <?php echo ($dokter['hari'] == 'Selasa') ? 'selected' : ''; ?>>Selasa</option>
+                                        <option value="Rabu" <?php echo ($dokter['hari'] == 'Rabu') ? 'selected' : ''; ?>>Rabu</option>
+                                        <option value="Kamis" <?php echo ($dokter['hari'] == 'Kamis') ? 'selected' : ''; ?>>Kamis</option>
+                                        <option value="Jumat" <?php echo ($dokter['hari'] == 'Jumat') ? 'selected' : ''; ?>>Jum'at</option>
+                                        <option value="Sabtu" <?php echo ($dokter['hari'] == 'Sabtu') ? 'selected' : ''; ?>>Sabtu</option>
+                                        <option value="Minggu" <?php echo ($dokter['hari'] == 'Minggu') ? 'selected' : ''; ?>>Minggu</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Jam</label>

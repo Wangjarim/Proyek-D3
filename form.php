@@ -37,6 +37,15 @@ if (isset($_POST["submit"])) {
     }
 }
 
+$old_nik = isset($_POST['nik']) ? htmlspecialchars($_POST['nik']) : '';
+$old_jenis_kelamin = isset($_POST['jenis_kelamin']) ? htmlspecialchars($_POST['jenis_kelamin']) : '';
+$old_tempat_lahir = isset($_POST['tempat_lahir']) ? htmlspecialchars($_POST['tempat_lahir']) : '';
+$old_tanggal_lahir = isset($_POST['tanggal_lahir']) ? htmlspecialchars($_POST['tanggal_lahir']) : '';
+$old_alamat = isset($_POST['alamat']) ? htmlspecialchars($_POST['alamat']) : '';
+$old_no_hp = isset($_POST['no_hp']) ? htmlspecialchars($_POST['no_hp']) : '';
+$old_tgl_reservasi = isset($_POST['tgl_reservasi']) ? htmlspecialchars($_POST['tgl_reservasi']) : '';
+$old_tujuan = isset($_POST['tujuan']) ? htmlspecialchars($_POST['tujuan']) : '';
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +54,7 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Dokter</title>
+    <title>Isi Data Diri</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css?v=3.2.0">
@@ -92,31 +101,31 @@ if (isset($_POST["submit"])) {
                                     </div>
                                     <div class="form-group">
                                         <label>NIK</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan NIK" required name="nik">
+                                        <input type="text" class="form-control" placeholder="Format 1234-4321-1234-4321" required name="nik" value="<?= $old_nik; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
                                         <select required name="jenis_kelamin" id="jk" class="form-control">
                                             <option disabled selected>Pilih Jenis Kelamin</option>
-                                            <option value="Laki-Laki">Laki-Laki</option>
-                                            <option value="Perempuan">Perempuan</option>
+                                            <option value="Laki-Laki" <?= ($old_jenis_kelamin == 'Laki-Laki') ? 'selected' : ''; ?>>Laki-Laki</option>
+                                            <option value="Perempuan" <?= ($old_jenis_kelamin == 'Perempuan') ? 'selected' : ''; ?>>Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Tempat Lahir</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" required name="tempat_lahir">
+                                        <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" required name="tempat_lahir" value="<?= $old_tempat_lahir; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
-                                        <input type="date" class="form-control" placeholder="Masukkan Tanggal Lahir" required name="tanggal_lahir">
+                                        <input type="date" class="form-control" placeholder="Masukkan Tanggal Lahir" required name="tanggal_lahir" value="<?= $old_tanggal_lahir; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Alamat" required name="alamat">
+                                        <input type="text" class="form-control" placeholder="Masukkan Alamat" required name="alamat" value="<?= $old_alamat; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>No Hp</label>
-                                        <input type="number" class="form-control" placeholder="Masukkan Nomor HP" required name="no_hp">
+                                        <input type="number" class="form-control" placeholder="Masukkan Nomor HP" required name="no_hp" value="<?= $old_no_hp; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Dokter</label>
@@ -140,13 +149,12 @@ if (isset($_POST["submit"])) {
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Reservasi</label>
-                                        <input type="date" class="form-control" placeholder="Masukkan tanggal reservasi" required name="tgl_reservasi">
+                                        <input type="date" class="form-control" placeholder="Masukkan tanggal reservasi" required name="tgl_reservasi" value="<?= $old_tgl_reservasi; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Tujuan</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan tujuan reservasi" required name="tujuan">
+                                        <input type="text" class="form-control" placeholder="Masukkan tujuan reservasi" required name="tujuan" value="<?= $old_tujuan; ?>">
                                     </div>
-
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </div>

@@ -56,7 +56,7 @@ $struk = query("SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp AS no_hp_dokter,j.
                 </div>
             <?php endif; ?>
         </div>
-        <div class="container-fluid" id="pdfContent">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <div class="card">
@@ -66,9 +66,9 @@ $struk = query("SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp AS no_hp_dokter,j.
 
                         <div class="card-body">
                             <div>
-                                <div class="card-body">
+                                <div class="card-body" id="pdfContent">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" id="bagianPertama">
                                             <div class="form-group">
                                                 <label>Nama Lengkap</label>
                                                 <input type="text" class="form-control" value="<?= $struk['nama_lengkap']; ?>" name="nama_lengkap" disabled>
@@ -98,7 +98,7 @@ $struk = query("SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp AS no_hp_dokter,j.
                                                 <input type="number" class="form-control" placeholder="Masukkan Nomor HP" name="no_hp" disabled value="<?= $struk['no_hp']; ?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" id="bagianKedua">
                                             <div class="form-group">
                                                 <label>Nama Dokter</label>
                                                 <input type="text" class="form-control" disabled value="<?= $struk['nama']; ?>">
@@ -138,7 +138,7 @@ $struk = query("SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp AS no_hp_dokter,j.
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-primary" id="downloadBtn">Unduh sebagai PDF</button>
+                                    <a href="create_pdf.php?id_pasien=<?= $id_pasien; ?>" type="button" class="btn btn-primary" target="_blank">Unduh sebagai PDF</a>
                                 </div>
                             </div>
 
@@ -159,27 +159,32 @@ $struk = query("SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp AS no_hp_dokter,j.
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <!-- Include html2pdf.js from CDN -->
-    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 
+    <!-- Script untuk memuat jsPDF -->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+
+    <!-- Script untuk menggunakan jsPDF setelah halaman selesai dimuat -->
     <script>
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            // Call the function to generate and download the PDF
-            generatePDF();
-        });
-
-        function generatePDF() {
-            // Use html2pdf to convert the HTML content to PDF
-            var element = document.getElementById('pdfContent'); // 'pdfContent' is the id of the container holding your HTML content
-            var tes = html2pdf(element);
-            console.log(tes);
+        // Fungsi untuk mengunduh PDF
+        // Fungsi untuk mengunduh PDF
+        function downloadPDF() {
+            let srcwidth = document.getElementById('pdfContent').scrollWidth;
+            let pdf = new jsPDF('p', 'pt', 'a4');
+            pdf.html(document.getElementById('pdfContent'), {
+                html2canvas: {
+                    scale: 600 / srcwidth
+                    //600 is the width of a4 page. 'a4': [595.28, 841.89]
+                },
+                callback: function() {
+                    window.open(pdf.output('my_pdf_test'));
+                }
+            });
+            alert("pdf done");
         }
     </script>
+    </script>
 
-    <!-- Skrip FPDF (sesuaikan dengan path yang sesuai) -->
-    <!-- <script src="fpdf/fpdf.js"></script> -->
 
-    <!-- Skrip JavaScript untuk menangani pengunduhan PDF -->
 
 
 </body>
