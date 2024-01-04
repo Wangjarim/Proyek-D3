@@ -137,7 +137,6 @@ function dataDiri($data)
     $tempat_lahir = mysqli_real_escape_string($connect, $data['tempat_lahir']);
     $tanggal_lahir = mysqli_real_escape_string($connect, $data['tanggal_lahir']);
     $alamat = mysqli_real_escape_string($connect, $data['alamat']);
-    $no_hp = mysqli_real_escape_string($connect, $data['no_hp']);
     $tgl_reservasi = mysqli_real_escape_string($connect, $data['tgl_reservasi']);
 
     Carbon::setLocale('id');
@@ -176,7 +175,7 @@ function dataDiri($data)
 
         if ($jumlah_pasien < 3) {
             // Jika jumlah pasien masih kurang dari 3, tambahkan data pasien ke dalam tabel
-            $query_insert_pasien = "INSERT INTO pasien (id_user,id_dokter, nik, jenis_kelamin, tempat_lahir,tanggal_lahir,alamat,no_hp,tanggal_reservasi) VALUES ('$id_user','$id_dokter', '$nik', '$jenis_kelamin', '$tempat_lahir','$tanggal_lahir','$alamat','$no_hp','$tgl_reservasi')";
+            $query_insert_pasien = "INSERT INTO pasien (id_user,id_dokter, nik, jenis_kelamin, tempat_lahir,tanggal_lahir,alamat,tanggal_reservasi) VALUES ('$id_user','$id_dokter', '$nik', '$jenis_kelamin', '$tempat_lahir','$tanggal_lahir','$alamat','$tgl_reservasi')";
 
             mysqli_query($connect, $query_insert_pasien);
 

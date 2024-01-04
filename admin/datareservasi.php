@@ -120,7 +120,6 @@ $query = mysqli_query($connect, "SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp A
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Alamat</th>
-                                        <th>No HP</th>
                                         <th>Dokter</th>
                                         <th>Spesialis</th>
                                         <th>No HP Dokter</th>
@@ -138,7 +137,6 @@ $query = mysqli_query($connect, "SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp A
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Alamat</th>
-                                        <th>No HP</th>
                                         <th>Dokter</th>
                                         <th>Spesialis</th>
                                         <th>No HP Dokter</th>
@@ -158,7 +156,6 @@ $query = mysqli_query($connect, "SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp A
                                             <td><?= $pasien['tempat_lahir']; ?></td>
                                             <td><?= $pasien['tanggal_lahir']; ?></td>
                                             <td><?= $pasien['alamat']; ?></td>
-                                            <td><?= $pasien['no_hp']; ?></td>
                                             <td><?= $pasien['nama']; ?></td>
                                             <td><?= $pasien['spesialis']; ?></td>
                                             <td><?= $pasien['no_hp_dokter']; ?></td>

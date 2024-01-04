@@ -70,70 +70,66 @@ $struk = query("SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp AS no_hp_dokter,j.
                                     <div class="row">
                                         <div class="col-md-6" id="bagianPertama">
                                             <div class="form-group">
-                                                <label>Nama Lengkap</label>
-                                                <input type="text" class="form-control" value="<?= $struk['nama_lengkap']; ?>" name="nama_lengkap" disabled>
+                                                <label>Nama Lengkap:</label>
+                                                <div class="value"> <?= $struk['nama_lengkap']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>NIK</label>
-                                                <input type="number" class="form-control" placeholder="Masukkan NIK" name="nik" disabled value="<?= $struk['nik']; ?>">
+                                                <label>NIK:</label>
+                                                <div class="value"> <?= $struk['nik']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Jenis Kelamin</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan NIK" name="jk" disabled value="<?= $struk['jenis_kelamin']; ?>">
+                                                <label>Jenis Kelamin:</label>
+                                                <div class="value"> <?= $struk['jenis_kelamin']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tempat Lahir</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" disabled value="<?= $struk['tempat_lahir']; ?>">
+                                                <label>Tempat Lahir:</label>
+                                                <div class="value"> <?= $struk['tempat_lahir']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tanggal Lahir</label>
-                                                <input type="date" class="form-control" placeholder="Masukkan Tanggal Lahir" name="tanggal_lahir" disabled value="<?= $struk['tanggal_lahir']; ?>">
+                                                <label>Tanggal Lahir:</label>
+                                                <div class="value"> <?= $struk['tanggal_lahir']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tujuan</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan tanggal reservasi" name="tujuan" disabled value="<?= $struk['tujuan']; ?>">
+                                                <label>Tujuan:</label>
+                                                <div class="value"> <?= $struk['tujuan']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>No Hp</label>
-                                                <input type="number" class="form-control" placeholder="Masukkan Nomor HP" name="no_hp" disabled value="<?= $struk['no_hp']; ?>">
+                                                <label>Antrian:</label>
+                                                <div class="value"> <?= $struk['id_antrian']; ?></div>
                                             </div>
                                         </div>
                                         <div class="col-md-6" id="bagianKedua">
                                             <div class="form-group">
-                                                <label>Nama Dokter</label>
-                                                <input type="text" class="form-control" disabled value="<?= $struk['nama']; ?>">
+                                                <label>Nama Dokter:</label>
+                                                <div class="value"> <?= $struk['nama']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Spesialis</label>
-                                                <input type="text" class="form-control" disabled value="<?= $struk['spesialis']; ?>">
+                                                <label>Spesialis:</label>
+                                                <div class="value"> <?= $struk['spesialis']; ?></div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Hari</label>
-                                                <input type="text" class="form-control" disabled value="<?= $struk['hari']; ?>">
+                                                <label>Hari:</label>
+                                                <div class="value"> <?= $struk['hari']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Ruangan</label>
-                                                <input type="text" class="form-control" disabled value="<?= $struk['ruangan']; ?>">
+                                                <label>Ruangan:</label>
+                                                <div class="value"> <?= $struk['ruangan']; ?></div>
                                             </div>
                                             <div class="form-group">
-                                                <label>No Hp Dokter</label>
-                                                <input type="number" class="form-control" disabled value="<?= $struk['no_hp']; ?>">
+                                                <label>No Hp Dokter:</label>
+                                                <div class="value"> <?= $struk['no_hp_dokter']; ?> </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Tanggal Reservasi</label>
-                                                <input type="date" class="form-control" placeholder="Masukkan tanggal reservasi" name="tgl_reservasi" disabled value="<?= $struk['tanggal_reservasi']; ?>">
+                                                <label>Tanggal Reservasi:</label>
+                                                <div class="value"> <?= $struk['tanggal_reservasi']; ?> </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Antrian</label>
-                                                <input type="number" class="form-control" placeholder="Masukkan tanggal reservasi" name="antrian" disabled value="<?= $struk['id_antrian']; ?>">
-                                            </div>
+
                                         </div>
                                         <div class="col-md-6 w-100">
                                             <div class="form-group">
-                                                <label>Alamat</label>
-                                                <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat" disabled value="<?= $struk['alamat']; ?>">
+                                                <label>Alamat:</label>
+                                                <div class="value"> <?= $struk['alamat']; ?></div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -159,29 +155,6 @@ $struk = query("SELECT p.*,u.*,a.*,d.nama,d.spesialis,d.no_hp AS no_hp_dokter,j.
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-    <!-- Script untuk memuat jsPDF -->
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-
-    <!-- Script untuk menggunakan jsPDF setelah halaman selesai dimuat -->
-    <script>
-        // Fungsi untuk mengunduh PDF
-        // Fungsi untuk mengunduh PDF
-        function downloadPDF() {
-            let srcwidth = document.getElementById('pdfContent').scrollWidth;
-            let pdf = new jsPDF('p', 'pt', 'a4');
-            pdf.html(document.getElementById('pdfContent'), {
-                html2canvas: {
-                    scale: 600 / srcwidth
-                    //600 is the width of a4 page. 'a4': [595.28, 841.89]
-                },
-                callback: function() {
-                    window.open(pdf.output('my_pdf_test'));
-                }
-            });
-            alert("pdf done");
-        }
-    </script>
     </script>
 
 

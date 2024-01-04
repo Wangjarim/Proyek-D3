@@ -144,10 +144,6 @@ $old_tujuan = isset($_POST['tujuan']) ? htmlspecialchars($_POST['tujuan']) : '';
                                         <input type="text" class="form-control" disabled value="<?= $dokter['ruangan']; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label>No Hp Dokter</label>
-                                        <input type="number" class="form-control" disabled value="<?= $dokter['no_hp']; ?>">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Tanggal Reservasi</label>
                                         <input type="date" class="form-control" placeholder="Masukkan tanggal reservasi" required name="tgl_reservasi" value="<?= $old_tgl_reservasi; ?>">
                                     </div>

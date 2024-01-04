@@ -120,7 +120,6 @@ $query = mysqli_query($connect, "SELECT p.*,u.nama_lengkap FROM pasien p INNER J
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Alamat</th>
-                                        <th>No HP</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -132,7 +131,6 @@ $query = mysqli_query($connect, "SELECT p.*,u.nama_lengkap FROM pasien p INNER J
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Alamat</th>
-                                        <th>No HP</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -146,7 +144,6 @@ $query = mysqli_query($connect, "SELECT p.*,u.nama_lengkap FROM pasien p INNER J
                                             <td><?= $pasien['tempat_lahir']; ?></td>
                                             <td><?= $pasien['tanggal_lahir']; ?></td>
                                             <td><?= $pasien['alamat']; ?></td>
-                                            <td><?= $pasien['no_hp']; ?></td>
                                         </tr>
                                         <?php $i++ ?>
                                     <?php endwhile; ?>

@@ -74,10 +74,6 @@ $html .= '
             <label>Tujuan:</label>
             <div class="value">' . $struk['tujuan'] . '</div>
         </div>
-        <div class="form-group">
-            <label>No Hp:</label>
-            <div class="value">' . $struk['no_hp'] . '</div>
-        </div>
     </div>
     <div class="col-md-6" id="bagianKedua">
         <div class="form-group">
@@ -98,7 +94,7 @@ $html .= '
         </div>
         <div class="form-group">
             <label>No Hp Dokter:</label>
-            <div class="value">' . $struk['no_hp'] . '</div>
+            <div class="value">' . $struk['no_hp_dokter'] . '</div>
         </div>
         <div class="form-group">
             <label>Tanggal Reservasi:</label>
